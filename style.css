@@ -190,10 +190,41 @@ body {
    スマホ表示
 ============================ */
 @media (max-width: 700px) {
+
+  /* 全体の横スクロール防止 */
+  body {
+    overflow-x: hidden;
+    padding: 0 10px;
+  }
+
+   /* ナビゲーション縮小 */
+  .navbar {
+    padding: 10px 16px;
+  }
+
   .nav-links {
     display: none;
   }
 
+.logo-img {
+    height: 60px;
+  }
+
+  .catchcopy .line1,
+  .catchcopy .line2 {
+    font-size: 12px;
+  }
+
+  .catchcopy .line3 {
+    font-size: 9px;
+  }
+
+  /* ヒーロー画像調整 */
+  .hero {
+    background-size: 60%;
+    min-height: 60vh;
+  }
+  
   .hamburger {
     display: block;
   }
@@ -201,8 +232,33 @@ body {
   .mobile-menu.open {
     display: flex;
   }
-}
 
+
+/* 犬種カード：スマホは2列にする */
+  .breeds {
+    flex-wrap: wrap;        /* ← スマホは折り返しOK */
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .breed-card {
+    width: 45%;             /* ← 2列で綺麗に並ぶ */
+    height: auto;
+    padding: 10px;
+  }
+
+  .breed-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* For More も同じ幅に揃える */
+  .more-card {
+    width: 45%;
+  }
+}
 
 /* ============================
    ヒーローセクション
@@ -343,14 +399,15 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   padding: 40px 0;
   margin-top: 120px;
 }
 
 .breed-card {
-  width: 180px;        /* カード幅を固定 */
-  height: 240px;       /* カード高さも固定 */
+  width: 160px;        /* カード幅を固定 */
+  height: 220px;       /* カード高さも固定 */
   text-align: center;
   padding: 10px;
   border-radius: 12px;
@@ -366,8 +423,8 @@ body {
 }
 
 .breed-card img {
-  width: 150px;
-  height: 150px;       /* ← 高さも固定して比率を揃える */
+  width: 140px;
+  height: 140px;       /* ← 高さも固定して比率を揃える */
   object-fit: cover;   /* ← これが超重要！ */
   border-radius: 12px;
   margin-bottom: 10px;
@@ -392,7 +449,7 @@ body {
 /* ============================
    スマホ最適化
 ============================ */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .hero {
     min-height: 70vh;
   }
