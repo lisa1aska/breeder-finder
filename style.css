@@ -189,7 +189,7 @@ body {
 /* ============================
    スマホ表示
 ============================ */
-@media (max-width: 700px) {
+@media (max-width: 767px) {
 
   /* 全体の横スクロール防止 */
   body {
@@ -503,9 +503,9 @@ body {
 
 .ranking-boxes {
   display: flex;
-  justify-content: center;
+  justify-content: nowrap;
   gap: 30px;
-  flex-wrap: wrap;
+  overflow-x: auto;
 }
 
 .ranking-box {
@@ -865,4 +865,61 @@ body {
 .back-to-top:hover {
   opacity: 0.8;
   transform: translateY(-3px);
+}
+/* ============================
+   PC版：ランキング横並び固定
+============================ */
+@media (min-width: 768px) {
+
+  /* ランキング①（日本・世界・ブリーダー数） */
+  .ranking-categories .ranking-boxes {
+    display: flex;
+    flex-wrap: nowrap;      /* 横並び固定 */
+    overflow-x: auto;       /* 横スクロール */
+    gap: 30px;
+  }
+
+  /* ランキング②（大型・小型・中型） */
+  .ranking-size .ranking-boxes {
+    display: flex;
+    flex-wrap: nowrap;      /* 横並び固定 */
+    overflow-x: auto;       /* 横スクロール */
+    gap: 30px;
+  }
+
+  /* スクロールバー控えめ */
+  .ranking-boxes::-webkit-scrollbar {
+    height: 8px;
+  }
+}
+
+/* ============================
+   スマホ版：ランキング縦並び
+============================ */
+@media (max-width: 767px) {
+
+  /* ランキング①・② 共通で縦並び */
+  .ranking-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: visible;   /* 横スクロールなし */
+  }
+}
+
+/* ============================
+   スマホ版：breeder-diagram 2列
+============================ */
+@media (max-width: 767px) {
+
+  .breeder-diagram {
+    display: flex;
+    flex-wrap: wrap;        /* 折り返しON */
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .breeder-diagram .diagram-item {
+    width: calc(50% - 12px);  /* 2個横並び */
+  }
 }
