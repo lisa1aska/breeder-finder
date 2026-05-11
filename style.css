@@ -407,17 +407,17 @@ body {
 }
 
 .breed-card {
-  width: 160px;        /* カード幅を固定 */
-  height: 220px;       /* カード高さも固定 */
- flex-shrink: 0;
+  width: clamp(120px, 14vw, 160px);  /* ← 画面幅に応じて縮む */
+  height: auto;                      /* ← 高さも可変に */
+  flex-shrink: 1;                    /* ← 縮むのを許可 */
+
   text-align: center;
   padding: 10px;
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  background: #f8f4ec;   /* 必要なら背景色をつけてもOK */
+  background: #f8f4ec;
 }
-
 
 .breed-card:hover {
   transform: scale(1.05);
@@ -425,9 +425,9 @@ body {
 }
 
 .breed-card img {
-  width: 140px;
-  height: 140px;       /* ← 高さも固定して比率を揃える */
-  object-fit: cover;   /* ← これが超重要！ */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: 12px;
   margin-bottom: 10px;
   transition: transform 0.3s ease;
