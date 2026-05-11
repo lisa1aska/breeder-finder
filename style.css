@@ -50,7 +50,7 @@
 
 body {
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: auto;
   font-family: "Noto Sans JP", sans-serif;
   padding: 0 20px;
 }
@@ -397,10 +397,11 @@ body {
 ============================ */
 .breeds {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;;
   gap: 20px;
   flex-wrap: nowrap;
   overflow-x: auto;
+  width: max-content;
   padding: 40px 0;
   margin-top: 120px;
 }
@@ -408,6 +409,7 @@ body {
 .breed-card {
   width: 160px;        /* カード幅を固定 */
   height: 220px;       /* カード高さも固定 */
+ flex-shrink: 0;
   text-align: center;
   padding: 10px;
   border-radius: 12px;
@@ -438,8 +440,9 @@ body {
 }
 
 .more-card img {
-  width: 150px;
+  width: 160px;
   opacity: 0.8;
+  flex-shrink: 0;
 }
 
 .more-card:hover img {
