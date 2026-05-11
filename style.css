@@ -397,26 +397,28 @@ body {
 ============================ */
 .breeds {
   display: flex;
-  justify-content: flex-start;;
+  justify-content: center;   /* ← 中央寄せに変更 */
   gap: 20px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  width: max-content;
+  width: 100%;               /* ← max-content を消して中央寄せ可能に */
   padding: 40px 0;
   margin-top: 120px;
+  margin-left: auto;         /* ← 念のため中央寄せ補強 */
+  margin-right: auto;
 }
 
-.breed-card {
-  width: clamp(120px, 14vw, 160px);  /* ← 画面幅に応じて縮む */
-  height: auto;                      /* ← 高さも可変に */
-  flex-shrink: 1;                    /* ← 縮むのを許可 */
 
-  text-align: center;
-  padding: 10px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  background: #f8f4ec;
+.breed-card {
+    width: 160px;        /* ← 完全固定 */
+    height: 220px;       /* ← 完全固定 */
+    flex-shrink: 0;      /* ← 絶対に縮ませない */
+    text-align: center;
+    padding: 10px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background: #f8f4ec;
 }
 
 .breed-card:hover {
@@ -425,13 +427,13 @@ body {
 }
 
 .breed-card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease;
-}
+    width: 140px;        /* ← 完全固定 */
+    height: 140px;       /* ← 完全固定 */
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+  }
 
 
 .breed-card:hover img {
@@ -503,9 +505,13 @@ body {
 
 .ranking-boxes {
   display: flex;
-  justify-content: nowrap;
+  justify-content: center;   /* ← 中央揃え */
   gap: 30px;
+  flex-wrap: nowrap;
   overflow-x: auto;
+  width: 100%;               /* ← コンテナを中央揃え可能に */
+  margin-left: auto;         /* ← 中央揃え補強 */
+  margin-right: auto;
 }
 
 .ranking-box {
@@ -866,32 +872,7 @@ body {
   opacity: 0.8;
   transform: translateY(-3px);
 }
-/* ============================
-   PC版：ランキング横並び固定
-============================ */
-@media (min-width: 768px) {
 
-  /* ランキング①（日本・世界・ブリーダー数） */
-  .ranking-categories .ranking-boxes {
-    display: flex;
-    flex-wrap: nowrap;      /* 横並び固定 */
-    overflow-x: auto;       /* 横スクロール */
-    gap: 30px;
-  }
-
-  /* ランキング②（大型・小型・中型） */
-  .ranking-size .ranking-boxes {
-    display: flex;
-    flex-wrap: nowrap;      /* 横並び固定 */
-    overflow-x: auto;       /* 横スクロール */
-    gap: 30px;
-  }
-
-  /* スクロールバー控えめ */
-  .ranking-boxes::-webkit-scrollbar {
-    height: 8px;
-  }
-}
 
 /* ============================
    スマホ版：ランキング縦並び
